@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart'; // 이 줄을 추가해야 합니다.
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:sharecalendar_app/sign_up_screen.dart';
 import 'calendar_page.dart';
 import 'schedule_creation_page.dart';
 import 'schedule_modify_page.dart';
-
+import 'login_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -17,17 +18,21 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      // 로컬라이제이션 설정을 추가합니다.
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: [
-        Locale('ko', ''), // 한국어 지원
-        Locale('en', ''), // 영어 지원 (필요시 추가)
+        Locale('ko', ''),
+        Locale('en', ''),
       ],
-      home: CalendarPage(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => LoginScreen(),
+        '/calendar': (context) => CalendarPage(),
+        '/signup': (context) => SignUpScreen(),
+      },
     );
   }
 }
